@@ -34,14 +34,14 @@ h2{font:700 clamp(1.6rem,6vw,2.2rem)/1.2 "Libre Baskerville","Noto Sans Thai",Ge
 .btn:active{transform:translateY(2px)}
 .tel{display:inline-block;margin-top:.8em;font:800 clamp(1.8rem,8vw,2.6rem) "Nunito",sans-serif;color:var(--orange);text-decoration:none}
 button:disabled{opacity:.6}
-#form,#rcard{background:#fff;border-radius:20px;padding:20px 16px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
+#form{background:#fff;border-radius:20px;padding:20px 16px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
 #form h2{font-size:1.5rem;margin-top:0}
 .q{background:#fbf7f3;border:2px solid #eee3da;border-radius:14px;padding:14px;margin:14px 0}
 .q.bad{border-color:#d62839;background:#fff1f2}.q h3{font-size:1rem;margin:0 0 8px}
 .o{display:flex;gap:10px;align-items:center;margin:7px 0;font-size:.95rem}
 .o select{font:inherit;min-width:3.4em;padding:.2em;border-radius:8px;border:1px solid #cdbfb3}
 input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #cdbfb3;border-radius:10px}
-#send,#rsend{font:800 1.1rem "Nunito","Noto Sans Thai",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.8em 2em;cursor:pointer}
+#send{font:800 1.1rem "Nunito","Noto Sans Thai",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.8em 2em;cursor:pointer}
 #home:not(.hide){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em;min-height:calc(100vh - 150px)}
 #home .cta{margin-top:1.8em}
 .hint{font-size:.9rem;color:var(--soft)}.err{color:#d62839;font-weight:700}.hide{display:none}
@@ -78,21 +78,11 @@ input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #c
   <button class="btn alt" id="back" onclick="go('choose')" style="font-size:.95rem;padding:.5em 1.2em;margin-bottom:6px"></button>
   <h2 id="f_title"></h2><p class="hint" id="f_intro"></p><p class="hint"><b id="f_hi"></b><br><b id="f_lo"></b></p>
   <label><span id="f_name"></span><input id="name"></label>
-  <label><span id="f_school"></span><input id="school"></label>
-  <label><span id="f_zip"></span><input id="zip" inputmode="numeric"></label>
+  <label><span id="f_addr"></span><input id="addr"></label>
+  <label><span id="f_zip"></span><input id="zip"></label>
+  <label><span id="f_phone"></span><input id="phone" type="tel"></label>
+  <label><span id="f_email"></span><input id="email" type="email"></label>
   <div id="qs"></div><p id="msg" class="err"></p><button id="send" onclick="submitAll()"></button>
-</section>
-
-<section id="register" class="hide">
-  <h2 id="r_title"></h2><p class="sub" id="r_intro"></p>
-  <div id="rcard">
-    <label><span id="l_name"></span><input id="in_name"></label>
-    <label><span id="l_addr"></span><input id="in_addr"></label>
-    <label><span id="l_zip"></span><input id="in_zip"></label>
-    <label><span id="l_phone"></span><input id="in_phone" type="tel"></label>
-    <label><span id="l_email"></span><input id="in_email" type="email"></label>
-    <p id="rmsg" class="err"></p><button id="rsend" onclick="submitReg()"></button>
-  </div>
 </section>
 
 <section id="thanks" class="hide"><h1>Thank you!</h1><p class="sub" id="thanks_text"></p></section>
@@ -102,10 +92,10 @@ input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #c
 const API = "https://script.google.com/macros/s/AKfycbzqNk4dLZuEqpfh4N8DmsSqRBO-9F3s9BO-f5YQB7FFAJMdBqVU78SR6fSUpcEZr7P2zw/exec";
 // ============================================================
 const S={
- en:{title:"English Language Learning Assessment",intro:"Read each of the following statements, and rate yourself on a 1–5 scale, where each rating corresponds to how well a statement describes you. Use each number only once for each question.",hi:"5 = most like you",lo:"1 = least like you",name:"Your name",school:"School",zip:"School ZIP code",back:"← Back",reg_title:"Registration",reg_intro:"Please fill the form",r_name:"Name",r_addr:"Home Address",r_zip:"Zip or Postal Code",r_phone:"Telephone Number or Mobile Number",r_email:"Contact Email",r_submit:"Submit",r_need:"Please fill in every field (use a valid email).",submit:"Submit",load:"Loading…",needInfo:"Please fill in your name, school and ZIP code.",needRanks:"Each question needs the numbers 1 to 5, each used once. Check the red boxes.",sending:"Sending…",fail:"Something went wrong. Please try again.",loadFail:"Could not load the questions. Please try again later.",thanks:"Your answers have been received."},
- th:{title:"แบบประเมินการเรียนรู้ภาษาอังกฤษ",intro:"โปรดอ่านข้อความต่อไปนี้แต่ละข้อ แล้วให้คะแนนตนเองโดยใช้มาตรวัดระดับ 1–5 ซึ่งคะแนนแต่ละระดับจะสะท้อนว่าข้อความนั้นอธิบายตัวคุณได้ดีเพียงใด ใช้ตัวเลขแต่ละตัวเพียงครั้งเดียวในแต่ละข้อ",hi:"5 = เหมือนคุณมากที่สุด",lo:"1 = เหมือนคุณน้อยที่สุด",name:"ชื่อของคุณ",school:"โรงเรียน",zip:"รหัสไปรษณีย์ของโรงเรียน",back:"← ย้อนกลับ",reg_title:"ลงทะเบียน",reg_intro:"กรุณากรอกแบบฟอร์ม",r_name:"ชื่อ",r_addr:"ที่อยู่",r_zip:"รหัสไปรษณีย์",r_phone:"หมายเลขโทรศัพท์หรือเบอร์มือถือ",r_email:"อีเมลสำหรับติดต่อ",r_submit:"ส่งข้อมูล",r_need:"กรุณากรอกข้อมูลให้ครบทุกช่อง (อีเมลต้องถูกต้อง)",submit:"ส่งคำตอบ",load:"กำลังโหลด…",needInfo:"กรุณากรอกชื่อ โรงเรียน และรหัสไปรษณีย์",needRanks:"แต่ละข้อต้องใช้ตัวเลข 1 ถึง 5 อย่างละหนึ่งครั้ง กรุณาตรวจสอบกล่องสีแดง",sending:"กำลังส่ง…",fail:"เกิดข้อผิดพลาด กรุณาลองอีกครั้ง",loadFail:"ไม่สามารถโหลดคำถามได้ กรุณาลองใหม่ภายหลัง",thanks:"ได้รับคำตอบของคุณแล้ว"}};
-const ALL=["home","about","assign","contact","choose","form","register","thanks"], HASH=["home","about","assign","contact","choose"];
-let LANG="en", Q=[], C={}, SID="";
+ en:{title:"English Language Learning Assessment",intro:"Read each of the following statements, and rate yourself on a 1–5 scale, where each rating corresponds to how well a statement describes you. Use each number only once for each question.",hi:"5 = most like you",lo:"1 = least like you",name:"Name",addr:"Home Address",zip:"Zip or Postal Code",phone:"Telephone Number or Mobile Number",email:"Contact Email",back:"← Back",submit:"Submit",load:"Loading…",needInfo:"Please fill in every field (use a valid email).",needRanks:"Each question needs the numbers 1 to 5, each used once. Check the red boxes.",sending:"Sending…",fail:"Something went wrong. Please try again.",loadFail:"Could not load the questions. Please try again later.",thanks:"Your answers have been received."},
+ th:{title:"แบบประเมินการเรียนรู้ภาษาอังกฤษ",intro:"โปรดอ่านข้อความต่อไปนี้แต่ละข้อ แล้วให้คะแนนตนเองโดยใช้มาตรวัดระดับ 1–5 ซึ่งคะแนนแต่ละระดับจะสะท้อนว่าข้อความนั้นอธิบายตัวคุณได้ดีเพียงใด ใช้ตัวเลขแต่ละตัวเพียงครั้งเดียวในแต่ละข้อ",hi:"5 = เหมือนคุณมากที่สุด",lo:"1 = เหมือนคุณน้อยที่สุด",name:"ชื่อ",addr:"ที่อยู่",zip:"รหัสไปรษณีย์",phone:"หมายเลขโทรศัพท์หรือเบอร์มือถือ",email:"อีเมลสำหรับติดต่อ",back:"← ย้อนกลับ",submit:"ส่งคำตอบ",load:"กำลังโหลด…",needInfo:"กรุณากรอกข้อมูลให้ครบทุกช่อง (อีเมลต้องถูกต้อง)",needRanks:"แต่ละข้อต้องใช้ตัวเลข 1 ถึง 5 อย่างละหนึ่งครั้ง กรุณาตรวจสอบกล่องสีแดง",sending:"กำลังส่ง…",fail:"เกิดข้อผิดพลาด กรุณาลองอีกครั้ง",loadFail:"ไม่สามารถโหลดคำถามได้ กรุณาลองใหม่ภายหลัง",thanks:"ได้รับคำตอบของคุณแล้ว"}};
+const ALL=["home","about","assign","contact","choose","form","thanks"], HASH=["home","about","assign","contact","choose"];
+let LANG="en", Q=[], C={};
 const $=id=>document.getElementById(id);
 function go(p){ALL.forEach(x=>$(x).classList.toggle("hide",x!==p));
  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.p===p));
@@ -121,7 +111,7 @@ fetch("content/site.json").then(r=>r.json()).then(c=>{C=c;
 
 function start(l){LANG=l; const t=S[l]; document.documentElement.lang=l;
  $("f_title").textContent=t.title;$("f_intro").textContent=t.intro;$("f_hi").textContent=t.hi;$("f_lo").textContent=t.lo;
- $("f_name").textContent=t.name;$("f_school").textContent=t.school;$("f_zip").textContent=t.zip;$("send").textContent=t.submit;$("back").textContent=t.back;
+ ["name","addr","zip","phone","email"].forEach(k=>$("f_"+k).textContent=t[k]);$("send").textContent=t.submit;$("back").textContent=t.back;
  $("msg").textContent="";$("send").disabled=false;$("qs").textContent=t.load;go("form");
  fetch(API+"?lang="+l).then(r=>r.json()).then(d=>{Q=d.questions;render();}).catch(()=>{$("qs").textContent=t.loadFail;});}
 function render(){$("qs").innerHTML=Q.map((q,i)=>`<div class="q" id="q${i}"><h3>${esc(q.letter)}. ${esc(q.text)}</h3>`+
@@ -130,22 +120,13 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;","
 function ranks(i){return [...document.querySelectorAll(`select[data-q="${i}"]`)].map(s=>+s.value||0);}
 function valid(i){return ranks(i).slice().sort().join("")==="12345";}
 async function submitAll(){const t=S[LANG];
- const name=$("name").value.trim(),school=$("school").value.trim(),zip=$("zip").value.trim();
+ const v=k=>$(k).value.trim(),name=v("name"),addr=v("addr"),zip=v("zip"),phone=v("phone"),email=v("email");
  let first=-1;Q.forEach((_,i)=>{const ok=valid(i);$("q"+i).classList.toggle("bad",!ok);if(!ok&&first<0)first=i;});
- if(!name||!school||!zip){$("msg").textContent=t.needInfo;return;}
+ if(!name||!addr||!zip||!phone||!/^\S+@\S+\.\S+$/.test(email)){$("msg").textContent=t.needInfo;return;}
  if(first>=0||!Q.length){$("msg").textContent=t.needRanks;if(first>=0)$("q"+first).scrollIntoView({behavior:"smooth"});return;}
  $("send").disabled=true;$("msg").textContent=t.sending;
- try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({lang:LANG,name,school,zip,ranks:Q.map((_,i)=>ranks(i))})});
+ try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({lang:LANG,name,address:addr,zip,phone,email,ranks:Q.map((_,i)=>ranks(i))})});
   const d=await res.json();if(!d.ok)throw 0;
-  SID=d.id||"";startReg();
+  $("thanks_text").textContent=C["thanks_"+LANG]||t.thanks;go("thanks");
  }catch(e){$("msg").textContent=t.fail;$("send").disabled=false;}}
-function startReg(){const t=S[LANG];$("r_title").textContent=t.reg_title;$("r_intro").textContent=t.reg_intro;
- [["l_name","r_name"],["l_addr","r_addr"],["l_zip","r_zip"],["l_phone","r_phone"],["l_email","r_email"]].forEach(([a,b])=>$(a).textContent=t[b]);
- $("rsend").textContent=t.r_submit;$("rsend").disabled=false;$("rmsg").textContent="";go("register");}
-async function submitReg(){const t=S[LANG],v=k=>$("in_"+k).value.trim();
- const o={action:"register",id:SID,lang:LANG,name:v("name"),address:v("addr"),zip:v("zip"),phone:v("phone"),email:v("email")};
- if(!o.name||!o.address||!o.zip||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)){$("rmsg").textContent=t.r_need;return;}
- $("rsend").disabled=true;$("rmsg").textContent=t.sending;
- try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();if(!d.ok)throw 0;
-  $("thanks_text").textContent=C["thanks_"+LANG]||t.thanks;go("thanks");}catch(e){$("rmsg").textContent=t.fail;$("rsend").disabled=false;}}
 </script></main></body></html>
