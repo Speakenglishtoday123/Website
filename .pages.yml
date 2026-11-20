@@ -1,0 +1,33 @@
+content:
+  - name: site
+    label: Website text
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: brand, label: Site name (top-left), type: string }
+      - { name: nav_home, label: Menu - Home, type: string }
+      - { name: nav_about, label: Menu - About, type: string }
+      - { name: nav_assign, label: Menu - Assignments, type: string }
+      - { name: nav_contact, label: Menu - Contact, type: string }
+      - { name: enrol_label, label: Top-right button, type: string }
+      - { name: home_pill, label: Home - small label, type: string }
+      - { name: home_h1_a, label: Home - headline (black), type: string }
+      - { name: home_h1_b, label: Home - headline (orange), type: string }
+      - { name: home_sub_a, label: Home - sentence, type: text }
+      - { name: home_sub_b, label: Home - bold part of sentence, type: string }
+      - { name: home_button, label: Home - big button, type: string }
+      - { name: about_title, label: About - title, type: string }
+      - { name: about_text, label: About - text, type: text }
+      - { name: assign_title, label: Assignments - title, type: string }
+      - { name: assign_text, label: Assignments - text, type: text }
+      - { name: contact_name, label: Contact - name, type: string }
+      - { name: contact_site, label: Contact - website, type: string }
+      - { name: contact_phone, label: Contact - phone, type: string }
+      - { name: choose_title, label: Language page - title, type: string }
+      - { name: choose_text, label: Language page - text, type: text }
+      - { name: choose_only, label: Language page - bold line, type: string }
+      - { name: intro_en, label: Questionnaire instructions (English), type: text }
+      - { name: intro_th, label: Questionnaire instructions (Thai), type: text }
+      - { name: thanks_en, label: Thank-you message (English), type: text }
+      - { name: thanks_th, label: Thank-you message (Thai), type: text }
