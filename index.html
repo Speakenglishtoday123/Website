@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbe9dc">
+<title>Speak English Today – Dr. Ray</title>
+<meta name="description" content="Speak English spontaneously and fluently. Call Dr. Ray: +66 83 917 1898">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito:wght@600;700;800&family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17141f;--orange:#c2510c;--orange2:#d9631a;--soft:#6b6470;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:"Nunito","Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);text-align:center;
+background:linear-gradient(135deg,#f1eef7 0%,#f9f1ee 45%,#fbe3d3 100%) fixed;
+padding:env(safe-area-inset-top,0px) 0 calc(30px + env(safe-area-inset-bottom,0px))}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;max-width:980px;margin:0 auto;padding:16px 20px}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer;font:700 1.35rem "Libre Baskerville",Georgia,serif;color:var(--ink)}
+.logo svg{width:34px;height:34px}
+#nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 24px}
+#nav a{color:var(--ink);text-decoration:none;font:700 1.1rem "Nunito",sans-serif;padding:.3em 0;border-bottom:2px solid transparent}
+#nav a.on{color:var(--orange);border-color:var(--orange)}
+@media (max-width:760px){#nav{order:3;width:100%}}
+.nav-btn{font:800 .95rem "Nunito",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.6em 1.3em;cursor:pointer;text-decoration:none}
+main{max-width:760px;margin:0 auto;padding:0 20px}
+.pill{display:inline-block;background:#f3dccd;color:#7a3a10;font:800 1.05rem "Nunito",sans-serif;letter-spacing:.14em;padding:.6em 1.5em;border-radius:999px}
+h1{font:700 clamp(2.6rem,11vw,5.2rem)/1.1 "Libre Baskerville","Noto Sans Thai",Georgia,serif;margin:.5em 0 .3em}
+h1 .o{display:block;color:var(--orange)}
+h2{font:700 clamp(1.6rem,6vw,2.2rem)/1.2 "Libre Baskerville","Noto Sans Thai",Georgia,serif;margin:1em 0 .4em}
+.sub,.txt{font-size:clamp(1.2rem,4.4vw,1.55rem);color:var(--soft);max-width:30em;margin:0 auto;white-space:pre-line;line-height:1.6}
+.sub b{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:1.6em}
+.btn{font:800 1.3rem "Nunito","Noto Sans Thai",sans-serif;border-radius:999px;padding:.9em 2.3em;text-decoration:none;cursor:pointer;border:2px solid transparent}
+.btn.main{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(194,81,12,.35)}
+.btn.alt{background:#fff;color:var(--ink);border-color:#eadfd6}
+.btn:active{transform:translateY(2px)}
+.tel{display:inline-block;margin-top:.8em;font:800 clamp(1.8rem,8vw,2.6rem) "Nunito",sans-serif;color:var(--orange);text-decoration:none}
+button:disabled{opacity:.6}
+#form,#rcard{background:#fff;border-radius:20px;padding:20px 16px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
+#form h2{font-size:1.5rem;margin-top:0}
+.q{background:#fbf7f3;border:2px solid #eee3da;border-radius:14px;padding:14px;margin:14px 0}
+.q.bad{border-color:#d62839;background:#fff1f2}.q h3{font-size:1rem;margin:0 0 8px}
+.o{display:flex;gap:10px;align-items:center;margin:7px 0;font-size:.95rem}
+.o select{font:inherit;min-width:3.4em;padding:.2em;border-radius:8px;border:1px solid #cdbfb3}
+input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #cdbfb3;border-radius:10px}
+#send,#rsend{font:800 1.1rem "Nunito","Noto Sans Thai",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.8em 2em;cursor:pointer}
+#home:not(.hide){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em;min-height:calc(100vh - 150px)}
+#home .cta{margin-top:1.8em}
+.hint{font-size:.9rem;color:var(--soft)}.err{color:#d62839;font-weight:700}.hide{display:none}
+.emoji{font-size:4.5rem;margin-top:.4em}
+</style></head><body>
+
+<header>
+  <div class="logo" onclick="go('home')"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3C10 3 3 10 3 18.5c0 5 2.6 9.200 6.800 11.800L8.500 37l7.600-4.200c1.200.2 2.600.3 3.900.3 10 0 17-7 17-14.600S30 3 20 3z" fill="#d9831a"/><path d="M16 14c2.500 2.700 2.500 7.300 0 10M21 12c3.600 3.700 3.600 9.300 0 13M26 10c4.600 4.700 4.600 11.300 0 16" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round"/></svg><span data-k="brand">Speak English</span></div>
+  <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#assign" data-p="assign" data-k="nav_assign">Assignments</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
+  <a class="nav-btn" id="enrol" data-k="enrol_label" href="tel:+66839171898">Call to Enrol</a>
+</header>
+
+<main>
+<section id="home">
+  <span class="pill" data-k="home_pill">WHAT MATTERS</span>
+  <h1><span data-k="home_h1_a">Speak English</span><span class="o" data-k="home_h1_b">spontaneously and fluently</span></h1>
+  <p class="sub"><span data-k="home_sub_a">Join thousands of learners who’ve transformed their English</span> <b data-k="home_sub_b">from hesitant to fluent.</b></p>
+  <div class="cta"><button class="btn main" onclick="go('choose')" data-k="home_button">START HERE</button></div>
+</section>
+
+<section id="about" class="hide"><h2 data-k="about_title">About</h2><p class="txt" data-k="about_text">Speak English Today helps students speak English spontaneously and fluently.</p></section>
+
+<section id="assign" class="hide"><h2 data-k="assign_title">Assignments</h2><p class="txt" data-k="assign_text">Training Sessions (Orientation) and Assignments can be opened after being admitted into the program.</p></section>
+
+<section id="contact" class="hide"><h2 data-k="contact_name">Dr. Ray</h2><p class="txt" data-k="contact_site">speakenglish-today.com</p><a class="tel" data-k="contact_phone" id="c_phone" href="tel:+66839171898">+66 83 917 1898</a></section>
+
+<section id="choose" class="hide">
+  <h2 data-k="choose_title">Language Learning Assessment</h2>
+  <p class="sub"><span data-k="choose_text">Please provide basic information and complete the assessment.</span><br><b data-k="choose_only">Choose only ONE:</b></p>
+  <div class="cta"><button class="btn main" onclick="start('en')">English</button><button class="btn alt" onclick="start('th')">ภาษาไทย (Thai)</button></div>
+</section>
+
+<section id="form" class="hide">
+  <button class="btn alt" id="back" onclick="go('choose')" style="font-size:.95rem;padding:.5em 1.2em;margin-bottom:6px"></button>
+  <h2 id="f_title"></h2><p class="hint" id="f_intro"></p><p class="hint"><b id="f_hi"></b><br><b id="f_lo"></b></p>
+  <label><span id="f_name"></span><input id="name"></label>
+  <label><span id="f_school"></span><input id="school"></label>
+  <label><span id="f_zip"></span><input id="zip" inputmode="numeric"></label>
+  <div id="qs"></div><p id="msg" class="err"></p><button id="send" onclick="submitAll()"></button>
+</section>
+
+<section id="register" class="hide">
+  <h2 id="r_title"></h2><p class="sub" id="r_intro"></p>
+  <div id="rcard">
+    <label><span id="l_name"></span><input id="in_name"></label>
+    <label><span id="l_addr"></span><input id="in_addr"></label>
+    <label><span id="l_zip"></span><input id="in_zip"></label>
+    <label><span id="l_phone"></span><input id="in_phone" type="tel"></label>
+    <label><span id="l_email"></span><input id="in_email" type="email"></label>
+    <p id="rmsg" class="err"></p><button id="rsend" onclick="submitReg()"></button>
+  </div>
+</section>
+
+<section id="thanks" class="hide"><h1>Thank you!</h1><p class="sub" id="thanks_text"></p></section>
+
+<script>
+// ===== ONE SETTING: your Google Apps Script web-app URL =====
+const API = "https://script.google.com/macros/s/AKfycbzqNk4dLZuEqpfh4N8DmsSqRBO-9F3s9BO-f5YQB7FFAJMdBqVU78SR6fSUpcEZr7P2zw/exec";
+// ============================================================
+const S={
+ en:{title:"English Language Learning Assessment",intro:"Read each of the following statements, and rate yourself on a 1–5 scale, where each rating corresponds to how well a statement describes you. Use each number only once for each question.",hi:"5 = most like you",lo:"1 = least like you",name:"Your name",school:"School",zip:"School ZIP code",back:"← Back",reg_title:"Registration",reg_intro:"Please fill the form",r_name:"Name",r_addr:"Home Address",r_zip:"Zip or Postal Code",r_phone:"Telephone Number or Mobile Number",r_email:"Contact Email",r_submit:"Submit",r_need:"Please fill in every field (use a valid email).",submit:"Submit",load:"Loading…",needInfo:"Please fill in your name, school and ZIP code.",needRanks:"Each question needs the numbers 1 to 5, each used once. Check the red boxes.",sending:"Sending…",fail:"Something went wrong. Please try again.",loadFail:"Could not load the questions. Please try again later.",thanks:"Your answers have been received."},
+ th:{title:"แบบประเมินการเรียนรู้ภาษาอังกฤษ",intro:"โปรดอ่านข้อความต่อไปนี้แต่ละข้อ แล้วให้คะแนนตนเองโดยใช้มาตรวัดระดับ 1–5 ซึ่งคะแนนแต่ละระดับจะสะท้อนว่าข้อความนั้นอธิบายตัวคุณได้ดีเพียงใด ใช้ตัวเลขแต่ละตัวเพียงครั้งเดียวในแต่ละข้อ",hi:"5 = เหมือนคุณมากที่สุด",lo:"1 = เหมือนคุณน้อยที่สุด",name:"ชื่อของคุณ",school:"โรงเรียน",zip:"รหัสไปรษณีย์ของโรงเรียน",back:"← ย้อนกลับ",reg_title:"ลงทะเบียน",reg_intro:"กรุณากรอกแบบฟอร์ม",r_name:"ชื่อ",r_addr:"ที่อยู่",r_zip:"รหัสไปรษณีย์",r_phone:"หมายเลขโทรศัพท์หรือเบอร์มือถือ",r_email:"อีเมลสำหรับติดต่อ",r_submit:"ส่งข้อมูล",r_need:"กรุณากรอกข้อมูลให้ครบทุกช่อง (อีเมลต้องถูกต้อง)",submit:"ส่งคำตอบ",load:"กำลังโหลด…",needInfo:"กรุณากรอกชื่อ โรงเรียน และรหัสไปรษณีย์",needRanks:"แต่ละข้อต้องใช้ตัวเลข 1 ถึง 5 อย่างละหนึ่งครั้ง กรุณาตรวจสอบกล่องสีแดง",sending:"กำลังส่ง…",fail:"เกิดข้อผิดพลาด กรุณาลองอีกครั้ง",loadFail:"ไม่สามารถโหลดคำถามได้ กรุณาลองใหม่ภายหลัง",thanks:"ได้รับคำตอบของคุณแล้ว"}};
+const ALL=["home","about","assign","contact","choose","form","register","thanks"], HASH=["home","about","assign","contact","choose"];
+let LANG="en", Q=[], C={}, SID="";
+const $=id=>document.getElementById(id);
+function go(p){ALL.forEach(x=>$(x).classList.toggle("hide",x!==p));
+ document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.p===p));
+ if(HASH.includes(p)){try{history.replaceState(null,"","#"+p);}catch(e){}} scrollTo(0,0);}
+addEventListener("hashchange",()=>{const h=location.hash.slice(1); if(HASH.includes(h)) go(h);});
+document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();go(a.dataset.p);}));
+go(HASH.includes(location.hash.slice(1))?location.hash.slice(1):"home");
+
+fetch("content/site.json").then(r=>r.json()).then(c=>{C=c;
+ document.querySelectorAll("[data-k]").forEach(e=>{const v=c[e.dataset.k];if(v)e.textContent=v;});
+ if(c.contact_phone){const h="tel:"+c.contact_phone.replace(/[^+\d]/g,"");$("c_phone").href=h;$("enrol").href=h;}
+ ["en","th"].forEach(l=>{if(c["intro_"+l])S[l].intro=c["intro_"+l];});}).catch(()=>{});
+
+function start(l){LANG=l; const t=S[l]; document.documentElement.lang=l;
+ $("f_title").textContent=t.title;$("f_intro").textContent=t.intro;$("f_hi").textContent=t.hi;$("f_lo").textContent=t.lo;
+ $("f_name").textContent=t.name;$("f_school").textContent=t.school;$("f_zip").textContent=t.zip;$("send").textContent=t.submit;$("back").textContent=t.back;
+ $("msg").textContent="";$("send").disabled=false;$("qs").textContent=t.load;go("form");
+ fetch(API+"?lang="+l).then(r=>r.json()).then(d=>{Q=d.questions;render();}).catch(()=>{$("qs").textContent=t.loadFail;});}
+function render(){$("qs").innerHTML=Q.map((q,i)=>`<div class="q" id="q${i}"><h3>${esc(q.letter)}. ${esc(q.text)}</h3>`+
+ q.options.map((o,j)=>`<div class="o"><select data-q="${i}" data-o="${j}" onchange="$('q${i}').classList.remove('bad')"><option value="">–</option>${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join("")}</select><span>${esc(o)}</span></div>`).join("")+`</div>`).join("");}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function ranks(i){return [...document.querySelectorAll(`select[data-q="${i}"]`)].map(s=>+s.value||0);}
+function valid(i){return ranks(i).slice().sort().join("")==="12345";}
+async function submitAll(){const t=S[LANG];
+ const name=$("name").value.trim(),school=$("school").value.trim(),zip=$("zip").value.trim();
+ let first=-1;Q.forEach((_,i)=>{const ok=valid(i);$("q"+i).classList.toggle("bad",!ok);if(!ok&&first<0)first=i;});
+ if(!name||!school||!zip){$("msg").textContent=t.needInfo;return;}
+ if(first>=0||!Q.length){$("msg").textContent=t.needRanks;if(first>=0)$("q"+first).scrollIntoView({behavior:"smooth"});return;}
+ $("send").disabled=true;$("msg").textContent=t.sending;
+ try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify({lang:LANG,name,school,zip,ranks:Q.map((_,i)=>ranks(i))})});
+  const d=await res.json();if(!d.ok)throw 0;
+  SID=d.id||"";startReg();
+ }catch(e){$("msg").textContent=t.fail;$("send").disabled=false;}}
+function startReg(){const t=S[LANG];$("r_title").textContent=t.reg_title;$("r_intro").textContent=t.reg_intro;
+ [["l_name","r_name"],["l_addr","r_addr"],["l_zip","r_zip"],["l_phone","r_phone"],["l_email","r_email"]].forEach(([a,b])=>$(a).textContent=t[b]);
+ $("rsend").textContent=t.r_submit;$("rsend").disabled=false;$("rmsg").textContent="";go("register");}
+async function submitReg(){const t=S[LANG],v=k=>$("in_"+k).value.trim();
+ const o={action:"register",id:SID,lang:LANG,name:v("name"),address:v("addr"),zip:v("zip"),phone:v("phone"),email:v("email")};
+ if(!o.name||!o.address||!o.zip||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)){$("rmsg").textContent=t.r_need;return;}
+ $("rsend").disabled=true;$("rmsg").textContent=t.sending;
+ try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();if(!d.ok)throw 0;
+  $("thanks_text").textContent=C["thanks_"+LANG]||t.thanks;go("thanks");}catch(e){$("rmsg").textContent=t.fail;$("rsend").disabled=false;}}
+</script></main></body></html>
