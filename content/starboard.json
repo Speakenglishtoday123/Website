@@ -1,0 +1,23 @@
+{
+  "title": "STAR BOARD",
+  "subtitle": "English Speaking Skills Before and After Training",
+  "before_label": "Before",
+  "after_label": "After",
+  "empty": "Recordings coming soon.",
+  "people": [
+    {
+      "name": "David",
+      "before": "",
+      "before_link": "",
+      "after": "",
+      "after_link": ""
+    },
+    {
+      "name": "Jon",
+      "before": "",
+      "before_link": "",
+      "after": "",
+      "after_link": ""
+    }
+  ]
+}

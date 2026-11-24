@@ -1,0 +1,20 @@
+{
+  "title": "Courses currently OPEN",
+  "empty": "No courses are open right now.",
+  "back": "← All courses",
+  "more_heading": "More information",
+  "list": [
+    {
+      "title": "Speak English Spontaneously and Fluently",
+      "period": "",
+      "about": "Explanation / what it is about – replace this text.",
+      "more": ""
+    },
+    {
+      "title": "A Shift in Thinking and an Expanded Thinking – Learning Methodology",
+      "period": "",
+      "about": "Explanation / what it is about – replace this text.",
+      "more": ""
+    }
+  ]
+}

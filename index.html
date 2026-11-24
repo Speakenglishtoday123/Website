@@ -49,11 +49,42 @@ th,td{padding:.7em .9em;border-bottom:1px solid #eee3da;vertical-align:top}th{ba
 #tcard,#rcard{margin-top:1em}.chk{display:flex;align-items:flex-start;gap:10px;margin:.4em 0 1em;font-size:.95rem}.chk input{width:auto;margin:.3em 0 0}
 .hint{font-size:.9rem;color:var(--soft)}.err{color:#d62839;font-weight:700}.hide{display:none}
 .emoji{font-size:4.5rem;margin-top:.4em}
+h1 .o{font-size:inherit;margin:0;display:block}
+.cname{font:700 clamp(1.3rem,5vw,1.7rem) "Nunito","Noto Sans Thai",sans-serif;margin:.2em 0 0}
+.mail{display:block;margin:.5em 0 1em;font:800 clamp(1.1rem,4.6vw,1.5rem) "Nunito",sans-serif;color:var(--ink);word-break:break-all}
+.idbox{background:#fbf7f3;border:2px solid #eee3da;border-radius:14px;padding:14px;margin:4px 0 14px}.idbox .hint{margin:.3em 0 .8em}
+.idbox input[type=file]{background:#fff}.period.hide,.panel .btn.hide{display:none}
+header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.02rem}#nav a.star{color:#b7791f}#nav a.star.on{color:var(--orange)}
+.card{background:#fff;border-radius:20px;padding:20px 18px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
+.card .txt{text-align:left;max-width:none;font-size:1.05rem;margin:.6em 0 0}
+.clist{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:1.4em}
+.cbtn{font:700 clamp(1.05rem,4vw,1.3rem)/1.4 "Libre Baskerville","Noto Sans Thai",Georgia,serif;color:var(--ink);background:#fff;border:2px solid #eadfd6;border-radius:16px;padding:.9em 1.4em;cursor:pointer;max-width:100%;box-shadow:0 6px 18px rgba(60,30,10,.08)}
+.cbtn:hover{border-color:var(--orange)}
+.back{font:800 .95rem "Nunito","Noto Sans Thai",sans-serif;background:#fff;color:var(--ink);border:2px solid #eadfd6;border-radius:999px;padding:.5em 1.2em;cursor:pointer;margin-top:.6em}
+.period{display:inline-block;background:#f3dccd;color:#7a3a10;font:800 .95rem "Nunito","Noto Sans Thai",sans-serif;padding:.4em 1em;border-radius:999px}
+.card h3{font:700 1.05rem "Nunito","Noto Sans Thai",sans-serif;margin:1.2em 0 0;color:var(--orange)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:1.2em}
+.pp{background:#fff;border:1px solid #eee3da;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(60,30,10,.08)}
+.pn{background:#f3dccd;color:#7a3a10;font:800 1.05rem "Nunito","Noto Sans Thai",sans-serif;padding:.5em .6em}
+.pb{display:grid;grid-template-columns:1fr 1fr}
+.sb{font:800 .9rem "Nunito","Noto Sans Thai",sans-serif;border:0;background:#fff;color:var(--orange);padding:.8em .3em;cursor:pointer}
+.sb+.sb{border-left:1px solid #eee3da}.sb:hover{background:#fbf7f3}.sb.off{color:#bbb0a6;cursor:default;background:#fff}
+#player{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(94vw,520px);background:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(60,30,10,.25);padding:10px 12px;display:flex;flex-direction:column;gap:6px;z-index:9}
+#player.hide{display:none}#player .row{display:flex;justify-content:space-between;align-items:center;font-weight:800}#player audio{width:100%}
+#player button{border:0;background:none;font-size:1.3rem;cursor:pointer;color:var(--soft)}
+.lock{font-size:3rem;margin-top:.3em}
+.notes{margin:.8em 0 0;padding-left:1.3em;font-size:1.05rem;color:var(--soft);line-height:1.6}
+.two{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:1.4em}
+.panel{margin-top:1em}.panel .btn{font-size:1.05rem;padding:.7em 1.6em;display:inline-block;margin-top:.8em}
+.code{display:flex;gap:8px;flex-wrap:wrap}.code input{flex:1;min-width:10em;margin:0;font-size:1.15rem;letter-spacing:.08em}
+.code button{font:800 1.05rem "Nunito",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.6em 1.6em;cursor:pointer}
+.mat{border-top:1px solid #eee3da;padding:14px 0}.mat:first-of-type{border-top:0}.mat b{font-size:1.1rem}.mat audio{width:100%;margin-top:6px}
+.mat a{color:var(--orange);font-weight:800}
 </style></head><body>
 
 <header>
   <div class="logo" onclick="go('home')"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3C10 3 3 10 3 18.5c0 5 2.6 9.200 6.800 11.800L8.500 37l7.600-4.200c1.200.2 2.600.3 3.900.3 10 0 17-7 17-14.600S30 3 20 3z" fill="#d9831a"/><path d="M16 14c2.500 2.700 2.500 7.300 0 10M21 12c3.600 3.700 3.600 9.300 0 13M26 10c4.600 4.700 4.600 11.300 0 16" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round"/></svg><span data-k="brand">Speak English</span></div>
-  <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#assign" data-p="assign" data-k="nav_assign">Today’s Assignment</a><a href="#turnin" data-p="turnin" data-k="nav_turnin">Assignment Turn-In</a><a href="#register" data-p="register" data-k="nav_register">Registration</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
+  <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#courses" data-p="courses" data-k="nav_courses">Courses</a><a href="#assign" data-p="assign" data-k="nav_assign">Today’s Assignment</a><a href="#turnin" data-p="turnin" data-k="nav_turnin">Assignment Turn-In</a><a href="#register" data-p="register" data-k="nav_register">Registration</a><a href="#training" data-p="training" data-k="nav_training">Training</a><a href="#starboard" data-p="starboard" data-k="nav_star" class="star">★ Star Board</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
   <a class="nav-btn" id="enrol" data-k="enrol_label" href="tel:+66839171898">Call to Enrol</a>
 </header>
 
@@ -70,7 +101,11 @@ th,td{padding:.7em .9em;border-bottom:1px solid #eee3da;vertical-align:top}th{ba
 <section id="assign" class="hide"><h2 data-k="assign_title">Today’s Assignment</h2><p class="txt" data-k="assign_text"></p>
   <div class="tbl"><table><thead><tr><th>Date</th><th>Self-Opted / Assigned</th><th>Topic</th><th>Vocabulary</th></tr></thead><tbody id="abody"></tbody></table></div><p class="txt" id="a_none"></p></section>
 
-<section id="contact" class="hide"><h2 data-k="contact_name">Dr. Ray</h2><p class="txt" data-k="contact_site">speakenglish-today.com</p><a class="tel" data-k="contact_phone" id="c_phone" href="tel:+66839171898">+66 83 917 1898</a></section>
+<section id="contact" class="hide"><h2 data-k="contact_title">Contacts</h2>
+  <p class="cname" data-k="contact_name">Dr. Ray or คุณ สมบัติ</p>
+  <a class="tel" data-k="contact_phone" id="c_phone" href="tel:+66839171898">+66 83 917 1898</a>
+  <a class="mail" id="c_email" href="mailto:speakenglishtoday.ray@gmail.com">speakenglishtoday.ray@gmail.com</a>
+  <p class="txt" data-k="contact_site">speakenglish-today.com</p></section>
 
 <section id="turnin" class="hide"><h2 data-k="turnin_title">Assignment Turn-In</h2>
   <div id="tcard">
@@ -90,6 +125,10 @@ th,td{padding:.7em .9em;border-bottom:1px solid #eee3da;vertical-align:top}th{ba
     <label>Zip or Postal Code *<input id="r_zip"></label>
     <label>Mobile Number / Land-Line *<input id="r_phone" type="tel"></label>
     <label>E-mail *<input id="r_email" type="email"></label>
+    <div class="idbox"><b data-k="reg_id_title">Copy of I.D. *</b><p class="hint" data-k="reg_id_help">Do ONE of these: upload a photo of your I.D., OR type your I.D. number, OR e-mail a copy to us.</p>
+      <label>Upload I.D. (photo or PDF)<input id="r_idfile" type="file" accept="image/*,application/pdf"></label>
+      <label>I.D. Number<input id="r_idnum" autocomplete="off"></label>
+      <label class="chk"><input type="checkbox" id="r_idmail"><span>I will e-mail a copy to <b id="r_idmail_addr">speakenglishtoday8@gmail.com</b></span></label></div>
     <label class="chk"><input type="checkbox" id="r_consent"><span data-k="reg_consent">I am 20 or older, or my parent or guardian agrees. I understand my information is kept private and used only for this program.</span></label>
     <p id="rmsg" class="err"></p><button id="rsend" onclick="submitReg()">REGISTER</button>
   </div></section>
@@ -113,6 +152,36 @@ th,td{padding:.7em .9em;border-bottom:1px solid #eee3da;vertical-align:top}th{ba
 
 <section id="thanks" class="hide"><h1>Thank you!</h1><p class="sub" id="thanks_text"></p></section>
 
+<section id="courses" class="hide"><h2 id="co_title">Courses currently OPEN</h2>
+  <div class="clist" id="co_list"></div><p class="txt" id="co_none"></p></section>
+
+<section id="course" class="hide">
+  <button class="back" id="co_back" onclick="go('courses')">← All courses</button>
+  <h2 id="cd_title"></h2><span class="period hide" id="cd_period"></span>
+  <div class="card"><p class="txt" id="cd_about"></p><h3 id="cd_more_h" class="hide"></h3><p class="txt" id="cd_more"></p></div></section>
+
+<section id="training" class="hide"><h2 id="tr_title">Training</h2>
+  <div id="tr_locked">
+    <div class="lock">🔒</div>
+    <div class="card"><b id="tr_lock_title" style="font-size:1.25rem">Need Verification Code to Continue</b><ul class="notes" id="tr_notes"></ul></div>
+    <div class="two"><button class="btn main" id="tr_fee_btn" onclick="panel('fee')">Fee Structure</button><button class="btn alt" id="tr_vol_btn" onclick="panel('vol')">Volunteer Form</button></div>
+    <div class="card panel hide" id="tr_fee"><p class="txt" id="tr_fee_text"></p></div>
+    <div class="card panel hide" id="tr_vol"><p class="txt" id="tr_vol_text"></p><a class="btn main hide" id="tr_vol_link" target="_blank" rel="noopener"></a></div>
+    <div class="card"><label for="tr_code" id="tr_code_label" style="font-weight:800">Enter your verification code</label>
+      <div class="code" style="margin-top:8px"><input id="tr_code" autocomplete="off" autocapitalize="characters" onkeydown="if(event.key==='Enter')unlock()"><button id="tr_go" onclick="unlock()">CONTINUE</button></div>
+      <p class="err" id="tr_msg"></p></div>
+  </div>
+  <div id="tr_open" class="hide">
+    <p class="txt" id="tr_open_text"></p>
+    <div class="card" id="tr_items"></div>
+    <button class="back" id="tr_out" onclick="relock()" style="margin-top:1.2em">Lock this page</button>
+  </div></section>
+
+<section id="starboard" class="hide"><h2 id="sb_title" style="color:#b7791f">STAR BOARD</h2><p class="txt" id="sb_sub">English Speaking Skills Before and After Training</p>
+  <div class="sgrid" id="sb_grid"></div><p class="txt" id="sb_none"></p></section>
+
+<div id="player" class="hide"><div class="row"><span id="pl_name"></span><button onclick="stopPlay()" aria-label="Close">✕</button></div><audio id="pl_audio" controls preload="none"></audio></div>
+
 <script>
 // ===== ONE SETTING: your Google Apps Script web-app URL =====
 const API = "https://script.google.com/macros/s/AKfycbzqNk4dLZuEqpfh4N8DmsSqRBO-9F3s9BO-f5YQB7FFAJMdBqVU78SR6fSUpcEZr7P2zw/exec";
@@ -120,19 +189,82 @@ const API = "https://script.google.com/macros/s/AKfycbzqNk4dLZuEqpfh4N8DmsSqRBO-
 const S={
  en:{title:"English Language Learning Assessment",intro:"Read each of the following statements, and rate yourself on a 1–5 scale, where each rating corresponds to how well a statement describes you. Use each number only once for each question.",hi:"5 = most like you",lo:"1 = least like you",name:"Name",addr:"Home Address",zip:"Zip or Postal Code",phone:"Telephone Number or Mobile Number",email:"Contact Email",back:"← Back",submit:"Submit",load:"Loading…",needInfo:"Please fill in every field (use a valid email).",needRanks:"Each question needs the numbers 1 to 5, each used once. Check the red boxes.",sending:"Sending…",fail:"Something went wrong. Please try again.",loadFail:"Could not load the questions. Please try again later.",thanks:"Your answers have been received."},
  th:{title:"แบบประเมินการเรียนรู้ภาษาอังกฤษ",intro:"โปรดอ่านข้อความต่อไปนี้แต่ละข้อ แล้วให้คะแนนตนเองโดยใช้มาตรวัดระดับ 1–5 ซึ่งคะแนนแต่ละระดับจะสะท้อนว่าข้อความนั้นอธิบายตัวคุณได้ดีเพียงใด ใช้ตัวเลขแต่ละตัวเพียงครั้งเดียวในแต่ละข้อ",hi:"5 = เหมือนคุณมากที่สุด",lo:"1 = เหมือนคุณน้อยที่สุด",name:"ชื่อ",addr:"ที่อยู่",zip:"รหัสไปรษณีย์",phone:"หมายเลขโทรศัพท์หรือเบอร์มือถือ",email:"อีเมลสำหรับติดต่อ",back:"← ย้อนกลับ",submit:"ส่งคำตอบ",load:"กำลังโหลด…",needInfo:"กรุณากรอกข้อมูลให้ครบทุกช่อง (อีเมลต้องถูกต้อง)",needRanks:"แต่ละข้อต้องใช้ตัวเลข 1 ถึง 5 อย่างละหนึ่งครั้ง กรุณาตรวจสอบกล่องสีแดง",sending:"กำลังส่ง…",fail:"เกิดข้อผิดพลาด กรุณาลองอีกครั้ง",loadFail:"ไม่สามารถโหลดคำถามได้ กรุณาลองใหม่ภายหลัง",thanks:"ได้รับคำตอบของคุณแล้ว"}};
-const ALL=["home","about","assign","turnin","register","contact","choose","form","thanks"], HASH=["home","about","assign","turnin","register","contact","choose"];
+const ALL=["home","about","courses","course","assign","turnin","register","training","starboard","contact","choose","form","thanks"], HASH=["home","about","courses","assign","turnin","register","training","starboard","contact","choose"];
 let LANG="en", Q=[], C={};
 const $=id=>document.getElementById(id);
 function go(p){ALL.forEach(x=>$(x).classList.toggle("hide",x!==p));
- document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.p===p));
+ const n=p==="course"?"courses":p;
+ document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.p===n));
  if(HASH.includes(p)){try{history.replaceState(null,"","#"+p);}catch(e){}} scrollTo(0,0);}
-addEventListener("hashchange",()=>{const h=location.hash.slice(1); if(HASH.includes(h)) go(h);});
+function route(h){const m=/^course-(\d+)$/.exec(h);if(m){showCourse(+m[1]-1);return true;}if(HASH.includes(h)){go(h);return true;}return false;}
+addEventListener("hashchange",()=>route(location.hash.slice(1)));
 document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();go(a.dataset.p);}));
-go(HASH.includes(location.hash.slice(1))?location.hash.slice(1):"home");
+// small helpers for the pages below
+const setT=(id,v)=>{if(v!=null&&v!=="")$(id).textContent=v;};
+function safeUrl(u){u=String(u||"").trim();return /^(https?:\/\/|\/|media\/)/i.test(u)?u:"";}
+const isAudio=u=>/\.(mp3|m4a|wav|ogg|aac|oga|opus)(\?|#|$)/i.test(u);
+
+// ---------- COURSES (content/courses.json) ----------
+let COURSES=null, CI=-1, CO={};
+fetch("content/courses.json").then(r=>r.json()).then(c=>{CO=c;COURSES=(c.list||[]).filter(x=>x&&x.title);
+ setT("co_title",c.title);setT("co_back",c.back);
+ $("co_list").innerHTML=COURSES.map((x,i)=>`<button class="cbtn" onclick="showCourse(${i})">${esc(x.title)}</button>`).join("");
+ $("co_none").textContent=COURSES.length?"":(c.empty||"No courses are open right now.");
+ if(CI>=0)showCourse(CI);}).catch(()=>{COURSES=[];});
+function showCourse(i){CI=i;go("course");try{history.replaceState(null,"","#course-"+(i+1));}catch(e){}
+ if(!COURSES){$("cd_title").textContent="…";return;}
+ const x=COURSES[i];if(!x){go("courses");return;}
+ $("cd_title").textContent=x.title;$("cd_period").textContent=x.period||"";$("cd_period").classList.toggle("hide",!x.period);
+ $("cd_about").textContent=x.about||"";$("cd_more").textContent=x.more||"";
+ $("cd_more_h").textContent=CO.more_heading||"More information";$("cd_more_h").classList.toggle("hide",!x.more);}
+
+// ---------- STAR BOARD (content/starboard.json) ----------
+let STAR=[], SB={};
+fetch("content/starboard.json").then(r=>r.json()).then(s=>{SB=s;STAR=(s.people||[]).filter(p=>p&&p.name);
+ setT("sb_title",s.title);setT("sb_sub",s.subtitle);
+ const side=(p,i,k)=>{const lab=esc(s[k+"_label"]||(k==="before"?"Before":"After"));
+  return starUrl(p,k)?`<button class="sb" onclick="play(${i},'${k}')">▶ ${lab}</button>`:`<span class="sb off">${lab}</span>`;};
+ $("sb_grid").innerHTML=STAR.map((p,i)=>`<div class="pp"><div class="pn">${esc(p.name)}</div><div class="pb">${side(p,i,"before")}${side(p,i,"after")}</div></div>`).join("");
+ $("sb_none").textContent=STAR.length?"":(s.empty||"Recordings coming soon.");}).catch(()=>{});
+function starUrl(p,k){return safeUrl(p[k])||safeUrl(p[k+"_link"]);}
+function play(i,k){const p=STAR[i],u=starUrl(p,k);if(!u)return;
+ if(!isAudio(u)){window.open(u,"_blank","noopener");return;}
+ $("pl_name").textContent=p.name+" – "+(SB[k+"_label"]||(k==="before"?"Before":"After"));
+ const a=$("pl_audio");a.src=u;$("player").classList.remove("hide");a.play().catch(()=>{});}
+function stopPlay(){const a=$("pl_audio");a.pause();$("player").classList.add("hide");}
+
+// ---------- TRAINING (content/training.json) ----------
+let TR={}, OKCODE="";
+fetch("content/training.json").then(r=>r.json()).then(t=>{TR=t;
+ [["tr_title","title"],["tr_lock_title","lock_title"],["tr_fee_btn","fee_label"],["tr_vol_btn","vol_label"],["tr_code_label","code_label"],["tr_go","code_button"],["tr_out","logout"]].forEach(([id,k])=>setT(id,t[k]));
+ $("tr_notes").innerHTML=(t.notes||[]).filter(Boolean).map(n=>`<li>${esc(n)}</li>`).join("");
+ $("tr_fee_text").textContent=t.fee_text||"Coming soon.";
+ $("tr_vol_text").textContent=t.vol_text||(t.vol_link?"":"Coming soon.");
+ const vl=safeUrl(t.vol_link);$("tr_vol_link").classList.toggle("hide",!vl);if(vl){$("tr_vol_link").href=vl;$("tr_vol_link").textContent=t.vol_button||"Open the Volunteer Form";}
+ try{OKCODE=localStorage.getItem("se_training_code")||"";}catch(e){}
+ showTraining();}).catch(()=>{});
+function codeOk(c){c=String(c||"").trim().toLowerCase();return !!c&&(TR.codes||[]).some(x=>String(x||"").trim().toLowerCase()===c);}
+function panel(w){["fee","vol"].forEach(x=>$("tr_"+x).classList.toggle("hide",x!==w||!$("tr_"+x).classList.contains("hide")));}
+function unlock(){const c=$("tr_code").value;
+ if(!codeOk(c)){$("tr_msg").textContent=TR.wrong_code||"That code is not correct. Please check your e-mail.";return;}
+ OKCODE=c.trim();try{localStorage.setItem("se_training_code",OKCODE);}catch(e){}
+ $("tr_code").value="";$("tr_msg").textContent="";showTraining();scrollTo(0,0);}
+function relock(){OKCODE="";try{localStorage.removeItem("se_training_code");}catch(e){}showTraining();}
+function showTraining(){const ok=codeOk(OKCODE);$("tr_locked").classList.toggle("hide",ok);$("tr_open").classList.toggle("hide",!ok);
+ if(!ok)return;$("tr_open_text").textContent=TR.open_text||"";
+ const items=(TR.items||[]).filter(x=>x&&x.title);
+ $("tr_items").innerHTML=items.length?items.map(x=>{const u=safeUrl(x.file)||safeUrl(x.link);
+  return `<div class="mat"><b>${esc(x.title)}</b>${x.note?`<p class="txt">${esc(x.note)}</p>`:""}`+
+   (u?(isAudio(u)?`<audio controls preload="none" src="${esc(u)}"></audio>`:`<p style="margin:.5em 0 0"><a href="${esc(u)}" target="_blank" rel="noopener">${esc(TR.open_label||"Open")} →</a></p>`):"")+`</div>`;}).join("")
+  :`<p class="txt">${esc(TR.empty||"Training materials will appear here soon.")}</p>`;}
+
+if(!route(location.hash.slice(1)))go("home");
 
 fetch("content/site.json").then(r=>r.json()).then(c=>{C=c;
  document.querySelectorAll("[data-k]").forEach(e=>{const v=c[e.dataset.k];if(v)e.textContent=v;});
  if(c.contact_phone){const h="tel:"+c.contact_phone.replace(/[^+\d]/g,"");$("c_phone").href=h;$("enrol").href=h;}
+ if("contact_email" in c){const m=String(c.contact_email||"").trim();$("c_email").textContent=m;$("c_email").href="mailto:"+m;$("c_email").classList.toggle("hide",!m);}
+ if(c.reg_id_email)$("r_idmail_addr").textContent=c.reg_id_email;
  ["en","th"].forEach(l=>{if(c["intro_"+l])S[l].intro=c["intro_"+l];});}).catch(()=>{});
 
 function start(l){LANG=l; const t=S[l]; document.documentElement.lang=l;
@@ -162,11 +294,24 @@ function loadAssign(){fetch("content/assignment.json").then(r=>r.json()).then(a=
  $("abody").innerHTML=rows.map(r=>`<tr><td>${esc(r.date||"")}</td><td>${esc(r.kind||"")}</td><td>${esc(r.topic||"")}</td><td>${esc(r.vocab||"")}</td></tr>`).join("");
  $("a_none").textContent=rows.length?"":(a.empty||"No assignment yet.");}).catch(()=>{});}
 loadAssign();
+// Reads the I.D. file. Photos are shrunk to max 1600px JPEG so they upload fast; PDFs up to 5 MB.
+function readId(f){return new Promise((ok,bad)=>{if(!f){ok(null);return;}
+ const raw=()=>{if(f.size>5e6){bad("big");return;}const r=new FileReader();r.onload=()=>ok({name:f.name,type:f.type||"image/jpeg",data:String(r.result).split(",")[1]});r.onerror=()=>bad("read");r.readAsDataURL(f);};
+ if(f.type==="application/pdf"){raw();return;}
+ if(f.type&&!/^image\//.test(f.type)){bad("type");return;}
+ const url=URL.createObjectURL(f),img=new Image();
+ img.onload=()=>{const s=Math.min(1,1600/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);
+  c.getContext("2d").drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);ok({name:f.name.replace(/\.[^.]+$/,"")+".jpg",type:"image/jpeg",data:c.toDataURL("image/jpeg",.85).split(",")[1]});};
+ img.onerror=()=>{URL.revokeObjectURL(url);raw();};img.src=url;});}
 async function submitReg(){const v=k=>$(k).value.trim();
- const o={action:"register",first:v("r_first"),last:v("r_last"),address:v("r_addr"),zip:v("r_zip"),phone:v("r_phone"),email:v("r_email"),consent:$("r_consent").checked};
- if(!o.first||!o.last||!o.address||!o.zip||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)||!o.consent){$("rmsg").textContent="Please fill in every box, use a valid e-mail, and tick the box.";return;}
+ const o={action:"register",first:v("r_first"),last:v("r_last"),address:v("r_addr"),zip:v("r_zip"),phone:v("r_phone"),email:v("r_email"),idNumber:v("r_idnum"),idByEmail:$("r_idmail").checked,consent:$("r_consent").checked};
+ const f=$("r_idfile").files[0];
+ if(!o.first||!o.last||!o.address||!o.zip||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)){$("rmsg").textContent="Please fill in every box marked * and use a valid e-mail.";return;}
+ if(!f&&!o.idNumber&&!o.idByEmail){$("rmsg").textContent="Please add your I.D.: upload it, type the number, or tick the e-mail box.";return;}
+ if(!o.consent){$("rmsg").textContent="Please tick the consent box.";return;}
  $("rsend").disabled=true;$("rmsg").textContent="Sending…";
- try{await postJSON(o);clearBox(["r_first","r_last","r_addr","r_zip","r_phone","r_email","r_consent"]);$("rmsg").textContent="";$("rsend").disabled=false;
+ try{o.idFile=await readId(f);}catch(e){$("rmsg").textContent=e==="type"?"The I.D. must be a photo or a PDF.":"The I.D. file is too big (5 MB maximum). Please use a smaller photo.";$("rsend").disabled=false;return;}
+ try{await postJSON(o);clearBox(["r_first","r_last","r_addr","r_zip","r_phone","r_email","r_idfile","r_idnum","r_idmail","r_consent"]);$("rmsg").textContent="";$("rsend").disabled=false;
   $("thanks_text").textContent=C.thanks_register||"Your registration has been received.";go("thanks");}
  catch(e){$("rmsg").textContent="Something went wrong. Please try again.";$("rsend").disabled=false;}}
 async function submitTurnin(){const v=k=>$(k).value.trim();

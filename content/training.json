@@ -1,0 +1,23 @@
+{
+  "title": "Training",
+  "lock_title": "Need Verification Code to Continue",
+  "notes": [
+    "If you have submitted all necessary documents and the fees, a code will be sent to your E-mail address.",
+    "If you have submitted all necessary documents and the Volunteer Form, a code will be sent to your E-mail address."
+  ],
+  "fee_label": "Fee Structure",
+  "fee_text": "Write the fees here.",
+  "vol_label": "Volunteer Form",
+  "vol_text": "",
+  "vol_link": "",
+  "vol_button": "Open the Volunteer Form",
+  "code_label": "Enter your verification code",
+  "code_button": "CONTINUE",
+  "wrong_code": "That code is not correct. Please check the e-mail we sent you.",
+  "codes": [],
+  "open_text": "Welcome! Your training materials are below.",
+  "open_label": "Open",
+  "logout": "Lock this page",
+  "empty": "Training materials will appear here soon.",
+  "items": []
+}
