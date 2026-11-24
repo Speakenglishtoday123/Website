@@ -1,0 +1,11 @@
+{
+  "empty": "No assignment yet.",
+  "rows": [
+    {
+      "date": "2026.12.01",
+      "kind": "Assigned",
+      "topic": "Example topic - replace me",
+      "vocab": "word1, word2, word3"
+    }
+  ]
+}

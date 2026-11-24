@@ -34,23 +34,26 @@ h2{font:700 clamp(1.6rem,6vw,2.2rem)/1.2 "Libre Baskerville","Noto Sans Thai",Ge
 .btn:active{transform:translateY(2px)}
 .tel{display:inline-block;margin-top:.8em;font:800 clamp(1.8rem,8vw,2.6rem) "Nunito",sans-serif;color:var(--orange);text-decoration:none}
 button:disabled{opacity:.6}
-#form{background:#fff;border-radius:20px;padding:20px 16px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
+#form,#tcard,#rcard{background:#fff;border-radius:20px;padding:20px 16px;text-align:left;box-shadow:0 14px 40px rgba(60,30,10,.15);margin-top:1em}
 #form h2{font-size:1.5rem;margin-top:0}
 .q{background:#fbf7f3;border:2px solid #eee3da;border-radius:14px;padding:14px;margin:14px 0}
 .q.bad{border-color:#d62839;background:#fff1f2}.q h3{font-size:1rem;margin:0 0 8px}
 .o{display:flex;gap:10px;align-items:center;margin:7px 0;font-size:.95rem}
 .o select{font:inherit;min-width:3.4em;padding:.2em;border-radius:8px;border:1px solid #cdbfb3}
 input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #cdbfb3;border-radius:10px}
-#send{font:800 1.1rem "Nunito","Noto Sans Thai",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.8em 2em;cursor:pointer}
+#send,#tsend,#rsend{font:800 1.1rem "Nunito","Noto Sans Thai",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.8em 2em;cursor:pointer}
 #home:not(.hide){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em;min-height:calc(100vh - 150px)}
 #home .cta{margin-top:1.8em}
+.tbl{overflow-x:auto;margin-top:1em}table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;text-align:left;font-size:1rem}
+th,td{padding:.7em .9em;border-bottom:1px solid #eee3da;vertical-align:top}th{background:#f3dccd;color:#7a3a10}
+#tcard,#rcard{margin-top:1em}.chk{display:flex;align-items:flex-start;gap:10px;margin:.4em 0 1em;font-size:.95rem}.chk input{width:auto;margin:.3em 0 0}
 .hint{font-size:.9rem;color:var(--soft)}.err{color:#d62839;font-weight:700}.hide{display:none}
 .emoji{font-size:4.5rem;margin-top:.4em}
 </style></head><body>
 
 <header>
   <div class="logo" onclick="go('home')"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3C10 3 3 10 3 18.5c0 5 2.6 9.200 6.800 11.800L8.500 37l7.600-4.200c1.200.2 2.600.3 3.900.3 10 0 17-7 17-14.600S30 3 20 3z" fill="#d9831a"/><path d="M16 14c2.500 2.700 2.500 7.300 0 10M21 12c3.600 3.700 3.600 9.300 0 13M26 10c4.600 4.700 4.600 11.300 0 16" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round"/></svg><span data-k="brand">Speak English</span></div>
-  <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#assign" data-p="assign" data-k="nav_assign">Assignments</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
+  <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#assign" data-p="assign" data-k="nav_assign">Today’s Assignment</a><a href="#turnin" data-p="turnin" data-k="nav_turnin">Assignment Turn-In</a><a href="#register" data-p="register" data-k="nav_register">Registration</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
   <a class="nav-btn" id="enrol" data-k="enrol_label" href="tel:+66839171898">Call to Enrol</a>
 </header>
 
@@ -64,9 +67,32 @@ input{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #c
 
 <section id="about" class="hide"><h2 data-k="about_title">About</h2><p class="txt" data-k="about_text">Speak English Today helps students speak English spontaneously and fluently.</p></section>
 
-<section id="assign" class="hide"><h2 data-k="assign_title">Assignments</h2><p class="txt" data-k="assign_text">Training Sessions (Orientation) and Assignments can be opened after being admitted into the program.</p></section>
+<section id="assign" class="hide"><h2 data-k="assign_title">Today’s Assignment</h2><p class="txt" data-k="assign_text"></p>
+  <div class="tbl"><table><thead><tr><th>Date</th><th>Self-Opted / Assigned</th><th>Topic</th><th>Vocabulary</th></tr></thead><tbody id="abody"></tbody></table></div><p class="txt" id="a_none"></p></section>
 
 <section id="contact" class="hide"><h2 data-k="contact_name">Dr. Ray</h2><p class="txt" data-k="contact_site">speakenglish-today.com</p><a class="tel" data-k="contact_phone" id="c_phone" href="tel:+66839171898">+66 83 917 1898</a></section>
+
+<section id="turnin" class="hide"><h2 data-k="turnin_title">Assignment Turn-In</h2>
+  <div id="tcard">
+    <label>First Name<input id="t_first"></label>
+    <label>Last Name<input id="t_last"></label>
+    <label>Self-Opted / Assigned Topic (10 words)<input id="t_topic"></label>
+    <label>Vocabulary (10 words)<input id="t_vocab"></label>
+    <label>Diff Score (2 digits, for example 04)<input id="t_diff" inputmode="numeric" maxlength="2"></label>
+    <p id="tmsg" class="err"></p><button id="tsend" onclick="submitTurnin()">SUBMIT</button>
+  </div></section>
+
+<section id="register" class="hide"><h2 data-k="register_title">Registration</h2><p class="txt" data-k="reg_note"></p>
+  <div id="rcard">
+    <label>First Name *<input id="r_first"></label>
+    <label>Last Name *<input id="r_last"></label>
+    <label>Present Address *<input id="r_addr"></label>
+    <label>Zip or Postal Code *<input id="r_zip"></label>
+    <label>Mobile Number / Land-Line *<input id="r_phone" type="tel"></label>
+    <label>E-mail *<input id="r_email" type="email"></label>
+    <label class="chk"><input type="checkbox" id="r_consent"><span data-k="reg_consent">I am 20 or older, or my parent or guardian agrees. I understand my information is kept private and used only for this program.</span></label>
+    <p id="rmsg" class="err"></p><button id="rsend" onclick="submitReg()">REGISTER</button>
+  </div></section>
 
 <section id="choose" class="hide">
   <h2 data-k="choose_title">Language Learning Assessment</h2>
@@ -94,7 +120,7 @@ const API = "https://script.google.com/macros/s/AKfycbzqNk4dLZuEqpfh4N8DmsSqRBO-
 const S={
  en:{title:"English Language Learning Assessment",intro:"Read each of the following statements, and rate yourself on a 1–5 scale, where each rating corresponds to how well a statement describes you. Use each number only once for each question.",hi:"5 = most like you",lo:"1 = least like you",name:"Name",addr:"Home Address",zip:"Zip or Postal Code",phone:"Telephone Number or Mobile Number",email:"Contact Email",back:"← Back",submit:"Submit",load:"Loading…",needInfo:"Please fill in every field (use a valid email).",needRanks:"Each question needs the numbers 1 to 5, each used once. Check the red boxes.",sending:"Sending…",fail:"Something went wrong. Please try again.",loadFail:"Could not load the questions. Please try again later.",thanks:"Your answers have been received."},
  th:{title:"แบบประเมินการเรียนรู้ภาษาอังกฤษ",intro:"โปรดอ่านข้อความต่อไปนี้แต่ละข้อ แล้วให้คะแนนตนเองโดยใช้มาตรวัดระดับ 1–5 ซึ่งคะแนนแต่ละระดับจะสะท้อนว่าข้อความนั้นอธิบายตัวคุณได้ดีเพียงใด ใช้ตัวเลขแต่ละตัวเพียงครั้งเดียวในแต่ละข้อ",hi:"5 = เหมือนคุณมากที่สุด",lo:"1 = เหมือนคุณน้อยที่สุด",name:"ชื่อ",addr:"ที่อยู่",zip:"รหัสไปรษณีย์",phone:"หมายเลขโทรศัพท์หรือเบอร์มือถือ",email:"อีเมลสำหรับติดต่อ",back:"← ย้อนกลับ",submit:"ส่งคำตอบ",load:"กำลังโหลด…",needInfo:"กรุณากรอกข้อมูลให้ครบทุกช่อง (อีเมลต้องถูกต้อง)",needRanks:"แต่ละข้อต้องใช้ตัวเลข 1 ถึง 5 อย่างละหนึ่งครั้ง กรุณาตรวจสอบกล่องสีแดง",sending:"กำลังส่ง…",fail:"เกิดข้อผิดพลาด กรุณาลองอีกครั้ง",loadFail:"ไม่สามารถโหลดคำถามได้ กรุณาลองใหม่ภายหลัง",thanks:"ได้รับคำตอบของคุณแล้ว"}};
-const ALL=["home","about","assign","contact","choose","form","thanks"], HASH=["home","about","assign","contact","choose"];
+const ALL=["home","about","assign","turnin","register","contact","choose","form","thanks"], HASH=["home","about","assign","turnin","register","contact","choose"];
 let LANG="en", Q=[], C={};
 const $=id=>document.getElementById(id);
 function go(p){ALL.forEach(x=>$(x).classList.toggle("hide",x!==p));
@@ -129,4 +155,25 @@ async function submitAll(){const t=S[LANG];
   const d=await res.json();if(!d.ok)throw 0;
   $("thanks_text").textContent=C["thanks_"+LANG]||t.thanks;go("thanks");
  }catch(e){$("msg").textContent=t.fail;$("send").disabled=false;}}
+async function postJSON(o){const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();if(!d.ok)throw 0;return d;}
+function clearBox(ids){ids.forEach(i=>{const e=$(i);if(e.type==="checkbox")e.checked=false;else e.value="";});}
+function loadAssign(){fetch("content/assignment.json").then(r=>r.json()).then(a=>{
+ const rows=(a.rows||[]).filter(r=>r.date||r.topic||r.vocab);
+ $("abody").innerHTML=rows.map(r=>`<tr><td>${esc(r.date||"")}</td><td>${esc(r.kind||"")}</td><td>${esc(r.topic||"")}</td><td>${esc(r.vocab||"")}</td></tr>`).join("");
+ $("a_none").textContent=rows.length?"":(a.empty||"No assignment yet.");}).catch(()=>{});}
+loadAssign();
+async function submitReg(){const v=k=>$(k).value.trim();
+ const o={action:"register",first:v("r_first"),last:v("r_last"),address:v("r_addr"),zip:v("r_zip"),phone:v("r_phone"),email:v("r_email"),consent:$("r_consent").checked};
+ if(!o.first||!o.last||!o.address||!o.zip||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)||!o.consent){$("rmsg").textContent="Please fill in every box, use a valid e-mail, and tick the box.";return;}
+ $("rsend").disabled=true;$("rmsg").textContent="Sending…";
+ try{await postJSON(o);clearBox(["r_first","r_last","r_addr","r_zip","r_phone","r_email","r_consent"]);$("rmsg").textContent="";$("rsend").disabled=false;
+  $("thanks_text").textContent=C.thanks_register||"Your registration has been received.";go("thanks");}
+ catch(e){$("rmsg").textContent="Something went wrong. Please try again.";$("rsend").disabled=false;}}
+async function submitTurnin(){const v=k=>$(k).value.trim();
+ const o={action:"turnin",first:v("t_first"),last:v("t_last"),topic:v("t_topic"),vocab:v("t_vocab"),diff:v("t_diff")};
+ if(!o.first||!o.last||!o.topic||!o.vocab||!/^\d{2}$/.test(o.diff)){$("tmsg").textContent="Please fill in every box. Diff Score must be 2 digits, for example 04.";return;}
+ $("tsend").disabled=true;$("tmsg").textContent="Sending…";
+ try{await postJSON(o);clearBox(["t_first","t_last","t_topic","t_vocab","t_diff"]);$("tmsg").textContent="";$("tsend").disabled=false;
+  $("thanks_text").textContent=C.thanks_turnin||"Your assignment has been received.";go("thanks");}
+ catch(e){$("tmsg").textContent="Something went wrong. Please try again.";$("tsend").disabled=false;}}
 </script></main></body></html>
