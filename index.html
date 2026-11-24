@@ -109,8 +109,7 @@ header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.
 
 <section id="turnin" class="hide"><h2 data-k="turnin_title">Assignment Turn-In</h2>
   <div id="tcard">
-    <label>First Name<input id="t_first"></label>
-    <label>Last Name<input id="t_last"></label>
+    <label><span data-k="turnin_code_label">Your Student Code (from Dr. Ray)</span><input id="t_code" autocomplete="off" autocapitalize="characters" placeholder="for example K7QX-M2PD"></label>
     <label>Self-Opted / Assigned Topic (10 words)<input id="t_topic"></label>
     <label>Vocabulary (10 words)<input id="t_vocab"></label>
     <label>Diff Score (2 digits, for example 04)<input id="t_diff" inputmode="numeric" maxlength="2"></label>
@@ -323,10 +322,14 @@ async function submitReg(){const v=k=>$(k).value.trim();
   $("thanks_text").textContent=C.thanks_register||"Your registration has been received.";go("thanks");}
  catch(e){$("rmsg").textContent="Something went wrong. Please try again.";$("rsend").disabled=false;}}
 async function submitTurnin(){const v=k=>$(k).value.trim();
- const o={action:"turnin",first:v("t_first"),last:v("t_last"),topic:v("t_topic"),vocab:v("t_vocab"),diff:v("t_diff")};
- if(!o.first||!o.last||!o.topic||!o.vocab||!/^\d{2}$/.test(o.diff)){$("tmsg").textContent="Please fill in every box. Diff Score must be 2 digits, for example 04.";return;}
+ const o={action:"turnin",code:v("t_code"),topic:v("t_topic"),vocab:v("t_vocab"),diff:v("t_diff")};
+ if(!o.code||!o.topic||!o.vocab||!/^\d{2}$/.test(o.diff)){$("tmsg").textContent="Please fill in every box. Diff Score must be 2 digits, for example 04.";return;}
  $("tsend").disabled=true;$("tmsg").textContent="Sending…";
- try{await postJSON(o);clearBox(["t_first","t_last","t_topic","t_vocab","t_diff"]);$("tmsg").textContent="";$("tsend").disabled=false;
+ try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();
+  if(!d.ok){$("tmsg").textContent=d.error==="code"?(C.turnin_bad_code||"That Student Code is not correct. Please check it, or ask Dr. Ray."):"Something went wrong. Please try again.";$("tsend").disabled=false;return;}
+  try{localStorage.setItem("se_student_code",o.code);}catch(e){}
+  clearBox(["t_topic","t_vocab","t_diff"]);$("tmsg").textContent="";$("tsend").disabled=false;
   $("thanks_text").textContent=C.thanks_turnin||"Your assignment has been received.";go("thanks");}
  catch(e){$("tmsg").textContent="Something went wrong. Please try again.";$("tsend").disabled=false;}}
+try{const sc=localStorage.getItem("se_student_code");if(sc)$("t_code").value=sc;}catch(e){}
 </script></main></body></html>

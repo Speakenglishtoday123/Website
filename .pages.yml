@@ -27,6 +27,8 @@ content:
       - { name: assign_title, label: Today's Assignment - title, type: string }
       - { name: assign_text, label: Today's Assignment - short line above the table, type: text }
       - { name: turnin_title, label: Turn-In - title, type: string }
+      - { name: turnin_code_label, label: Turn-In - Student Code label, type: string }
+      - { name: turnin_bad_code, label: Turn-In - message for a wrong Student Code, type: text }
       - { name: register_title, label: Registration - title, type: string }
       - { name: reg_note, label: Registration - note above the form, type: text }
       - { name: reg_consent, label: Registration - consent sentence, type: text }

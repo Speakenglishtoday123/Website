@@ -40,5 +40,7 @@
   "contact_email": "speakenglishtoday.ray@gmail.com",
   "reg_id_title": "Copy of I.D. *",
   "reg_id_help": "Do ONE of these: upload a photo of your I.D., OR type your I.D. number, OR e-mail a copy to us.",
-  "reg_id_email": "speakenglishtoday8@gmail.com"
+  "reg_id_email": "speakenglishtoday8@gmail.com",
+  "turnin_code_label": "Your Student Code (from Dr. Ray)",
+  "turnin_bad_code": "That Student Code is not correct. Please check it, or ask Dr. Ray."
 }
