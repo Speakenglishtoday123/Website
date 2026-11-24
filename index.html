@@ -233,27 +233,35 @@ function play(i,k){const p=STAR[i],u=starUrl(p,k);if(!u)return;
  const a=$("pl_audio");a.src=u;$("player").classList.remove("hide");a.play().catch(()=>{});}
 function stopPlay(){const a=$("pl_audio");a.pause();$("player").classList.add("hide");}
 
-// ---------- TRAINING (content/training.json) ----------
-let TR={}, OKCODE="";
+// ---------- TRAINING ----------
+// Page text comes from content/training.json (public). The CODES and MATERIALS are NOT on the website:
+// they live in the private Google Sheet, and the Google script only sends the materials after a correct code.
+let TR={}, OKCODE="", ITEMS=[];
 fetch("content/training.json").then(r=>r.json()).then(t=>{TR=t;
  [["tr_title","title"],["tr_lock_title","lock_title"],["tr_fee_btn","fee_label"],["tr_vol_btn","vol_label"],["tr_code_label","code_label"],["tr_go","code_button"],["tr_out","logout"]].forEach(([id,k])=>setT(id,t[k]));
  $("tr_notes").innerHTML=(t.notes||[]).filter(Boolean).map(n=>`<li>${esc(n)}</li>`).join("");
  $("tr_fee_text").textContent=t.fee_text||"Coming soon.";
  $("tr_vol_text").textContent=t.vol_text||(t.vol_link?"":"Coming soon.");
  const vl=safeUrl(t.vol_link);$("tr_vol_link").classList.toggle("hide",!vl);if(vl){$("tr_vol_link").href=vl;$("tr_vol_link").textContent=t.vol_button||"Open the Volunteer Form";}
- try{OKCODE=localStorage.getItem("se_training_code")||"";}catch(e){}
- showTraining();}).catch(()=>{});
-function codeOk(c){c=String(c||"").trim().toLowerCase();return !!c&&(TR.codes||[]).some(x=>String(x||"").trim().toLowerCase()===c);}
+}).catch(()=>{});
+try{const s=localStorage.getItem("se_training_code")||"";if(s)checkCode(s,true);}catch(e){}
+async function checkCode(code,silent){
+ try{const d=await postJSON({action:"training",code:String(code).trim()});
+  OKCODE=String(code).trim();ITEMS=Array.isArray(d.items)?d.items:[];try{localStorage.setItem("se_training_code",OKCODE);}catch(e){}
+  showTraining();return true;}
+ catch(e){if(silent){try{localStorage.removeItem("se_training_code");}catch(x){}}return false;}}
 function panel(w){["fee","vol"].forEach(x=>$("tr_"+x).classList.toggle("hide",x!==w||!$("tr_"+x).classList.contains("hide")));}
-function unlock(){const c=$("tr_code").value;
- if(!codeOk(c)){$("tr_msg").textContent=TR.wrong_code||"That code is not correct. Please check your e-mail.";return;}
- OKCODE=c.trim();try{localStorage.setItem("se_training_code",OKCODE);}catch(e){}
- $("tr_code").value="";$("tr_msg").textContent="";showTraining();scrollTo(0,0);}
-function relock(){OKCODE="";try{localStorage.removeItem("se_training_code");}catch(e){}showTraining();}
-function showTraining(){const ok=codeOk(OKCODE);$("tr_locked").classList.toggle("hide",ok);$("tr_open").classList.toggle("hide",!ok);
+async function unlock(){const c=$("tr_code").value.trim();
+ if(!c){$("tr_msg").textContent=TR.wrong_code||"That code is not correct. Please check your e-mail.";return;}
+ $("tr_go").disabled=true;$("tr_msg").textContent=TR.checking||"Checking…";
+ const ok=await checkCode(c,false);$("tr_go").disabled=false;
+ if(!ok){$("tr_msg").textContent=TR.wrong_code||"That code is not correct. Please check your e-mail.";return;}
+ $("tr_code").value="";$("tr_msg").textContent="";scrollTo(0,0);}
+function relock(){OKCODE="";ITEMS=[];try{localStorage.removeItem("se_training_code");}catch(e){}showTraining();}
+function showTraining(){const ok=!!OKCODE;$("tr_locked").classList.toggle("hide",ok);$("tr_open").classList.toggle("hide",!ok);
  if(!ok)return;$("tr_open_text").textContent=TR.open_text||"";
- const items=(TR.items||[]).filter(x=>x&&x.title);
- $("tr_items").innerHTML=items.length?items.map(x=>{const u=safeUrl(x.file)||safeUrl(x.link);
+ const items=ITEMS.filter(x=>x&&x.title);
+ $("tr_items").innerHTML=items.length?items.map(x=>{const u=safeUrl(x.link);
   return `<div class="mat"><b>${esc(x.title)}</b>${x.note?`<p class="txt">${esc(x.note)}</p>`:""}`+
    (u?(isAudio(u)?`<audio controls preload="none" src="${esc(u)}"></audio>`:`<p style="margin:.5em 0 0"><a href="${esc(u)}" target="_blank" rel="noopener">${esc(TR.open_label||"Open")} →</a></p>`):"")+`</div>`;}).join("")
   :`<p class="txt">${esc(TR.empty||"Training materials will appear here soon.")}</p>`;}

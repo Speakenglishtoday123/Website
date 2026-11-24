@@ -83,7 +83,7 @@ content:
           - { name: about, label: What the course is about, type: text }
           - { name: more, label: "Other details (fees, schedule, who it is for)", type: text }
   - name: training
-    label: Training
+    label: Training page text (codes and materials are in the Google Sheet)
     type: file
     path: content/training.json
     format: json
@@ -99,21 +99,12 @@ content:
       - { name: vol_button, label: Text on the Volunteer Form link button, type: string }
       - { name: code_label, label: Text above the code box, type: string }
       - { name: code_button, label: Code button text, type: string }
+      - { name: checking, label: Message while the code is being checked, type: string }
       - { name: wrong_code, label: Message for a wrong code, type: string }
-      - { name: codes, label: VERIFICATION CODES that open the training (add or delete), type: string, list: true }
       - { name: open_text, label: Message after the code is accepted, type: text }
       - { name: open_label, label: Text on each Open link, type: string }
       - { name: logout, label: Lock button text, type: string }
       - { name: empty, label: Message when there are no materials, type: string }
-      - name: items
-        label: Training materials (shown only after a correct code)
-        type: object
-        list: true
-        fields:
-          - { name: title, label: Title, type: string }
-          - { name: note, label: Short note, type: text }
-          - { name: file, label: Upload a file (PDF or audio), type: file, options: { media: training } }
-          - { name: link, label: OR paste a link (YouTube or Google Drive), type: string }
   - name: starboard
     label: Star Board
     type: file
@@ -141,10 +132,4 @@ media:
     input: media/recordings
     output: /media/recordings
     extensions: [mp3, m4a, wav, ogg, aac]
-    rename: safe
-  - name: training
-    label: Training files
-    input: media/training
-    output: /media/training
-    extensions: [pdf, mp3, m4a, wav, ogg, aac, jpg, png]
     rename: safe
