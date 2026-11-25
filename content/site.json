@@ -4,7 +4,7 @@
   "nav_about": "About",
   "nav_assign": "Today’s Assignment",
   "nav_contact": "Contact",
-  "enrol_label": "Call to Enrol",
+  "enrol_label": "Call to Enroll",
   "home_pill": "WHAT MATTERS",
   "home_h1_a": "Speak English",
   "home_h1_b": "spontaneously and fluently",
@@ -42,5 +42,11 @@
   "reg_id_help": "Do ONE of these: upload a photo of your I.D., OR type your I.D. number, OR e-mail a copy to us.",
   "reg_id_email": "speakenglishtoday8@gmail.com",
   "turnin_code_label": "Your Student Code (from Dr. Ray)",
-  "turnin_bad_code": "That Student Code is not correct. Please check it, or ask Dr. Ray."
+  "turnin_bad_code": "That Student Code is not correct. Please check it, or ask Dr. Ray.",
+  "assign_col_date": "Date",
+  "assign_col_topic": "Self-Opted or Assigned Topic",
+  "assign_col_vocab": "Vocabulary",
+  "turnin_topic_label": "Self-Opted or Assigned Topic + Vocabulary (20 words)",
+  "turnin_transcript_label": "Transcript (20 words)",
+  "turnin_diff_label": "Diff Score (2 digits, for example 04)"
 }

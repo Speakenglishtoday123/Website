@@ -80,12 +80,14 @@ header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.
 .code button{font:800 1.05rem "Nunito",sans-serif;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:.6em 1.6em;cursor:pointer}
 .mat{border-top:1px solid #eee3da;padding:14px 0}.mat:first-of-type{border-top:0}.mat b{font-size:1.1rem}.mat audio{width:100%;margin-top:6px}
 .mat a{color:var(--orange);font-weight:800}
+.rich{text-align:left;font-size:1.05rem;line-height:1.65;color:var(--ink)}.rich p{margin:.5em 0}.rich h4{font:800 1.05rem "Nunito","Noto Sans Thai",sans-serif;color:var(--orange);margin:1.1em 0 .3em}.rich ul{margin:.2em 0 .6em;padding-left:1.3em}.rich li{margin:.25em 0}.rich hr{border:0;border-top:2px dashed #eadfd6;margin:1.2em 0}.rich .th{font-family:"Noto Sans Thai","Nunito",sans-serif}
+textarea{font:inherit;width:100%;padding:.6em;margin:4px 0 12px;border:1px solid #cdbfb3;border-radius:10px;resize:vertical}
 </style></head><body>
 
 <header>
   <div class="logo" onclick="go('home')"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3C10 3 3 10 3 18.5c0 5 2.6 9.200 6.800 11.800L8.500 37l7.600-4.200c1.200.2 2.600.3 3.900.3 10 0 17-7 17-14.600S30 3 20 3z" fill="#d9831a"/><path d="M16 14c2.500 2.700 2.500 7.300 0 10M21 12c3.600 3.700 3.600 9.300 0 13M26 10c4.600 4.700 4.600 11.300 0 16" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round"/></svg><span data-k="brand">Speak English</span></div>
   <nav id="nav"><a href="#home" data-p="home" data-k="nav_home">Home</a><a href="#about" data-p="about" data-k="nav_about">About</a><a href="#courses" data-p="courses" data-k="nav_courses">Courses</a><a href="#assign" data-p="assign" data-k="nav_assign">Today’s Assignment</a><a href="#turnin" data-p="turnin" data-k="nav_turnin">Assignment Turn-In</a><a href="#register" data-p="register" data-k="nav_register">Registration</a><a href="#training" data-p="training" data-k="nav_training">Training</a><a href="#starboard" data-p="starboard" data-k="nav_star" class="star">★ Star Board</a><a href="#contact" data-p="contact" data-k="nav_contact">Contact</a></nav>
-  <a class="nav-btn" id="enrol" data-k="enrol_label" href="tel:+66839171898">Call to Enrol</a>
+  <a class="nav-btn" id="enrol" data-k="enrol_label" href="tel:+66839171898">Call to Enroll</a>
 </header>
 
 <main>
@@ -99,7 +101,7 @@ header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.
 <section id="about" class="hide"><h2 data-k="about_title">About</h2><p class="txt" data-k="about_text">Speak English Today helps students speak English spontaneously and fluently.</p></section>
 
 <section id="assign" class="hide"><h2 data-k="assign_title">Today’s Assignment</h2><p class="txt" data-k="assign_text"></p>
-  <div class="tbl"><table><thead><tr><th>Date</th><th>Self-Opted / Assigned</th><th>Topic</th><th>Vocabulary</th></tr></thead><tbody id="abody"></tbody></table></div><p class="txt" id="a_none"></p></section>
+  <div class="tbl"><table><thead><tr><th data-k="assign_col_date">Date</th><th data-k="assign_col_topic">Self-Opted or Assigned Topic</th><th data-k="assign_col_vocab">Vocabulary</th></tr></thead><tbody id="abody"></tbody></table></div><p class="txt" id="a_none"></p></section>
 
 <section id="contact" class="hide"><h2 data-k="contact_title">Contacts</h2>
   <p class="cname" data-k="contact_name">Dr. Ray or คุณ สมบัติ</p>
@@ -110,9 +112,9 @@ header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.
 <section id="turnin" class="hide"><h2 data-k="turnin_title">Assignment Turn-In</h2>
   <div id="tcard">
     <label><span data-k="turnin_code_label">Your Student Code (from Dr. Ray)</span><input id="t_code" autocomplete="off" autocapitalize="characters" placeholder="for example K7QX-M2PD"></label>
-    <label>Self-Opted / Assigned Topic (10 words)<input id="t_topic"></label>
-    <label>Vocabulary (10 words)<input id="t_vocab"></label>
-    <label>Diff Score (2 digits, for example 04)<input id="t_diff" inputmode="numeric" maxlength="2"></label>
+    <label><span data-k="turnin_topic_label">Self-Opted or Assigned Topic + Vocabulary (20 words)</span><textarea id="t_topic" rows="2"></textarea></label>
+    <label><span data-k="turnin_transcript_label">Transcript (20 words)</span><textarea id="t_transcript" rows="2"></textarea></label>
+    <label><span data-k="turnin_diff_label">Diff Score (2 digits, for example 04)</span><input id="t_diff" inputmode="numeric" maxlength="2"></label>
     <p id="tmsg" class="err"></p><button id="tsend" onclick="submitTurnin()">SUBMIT</button>
   </div></section>
 
@@ -157,15 +159,15 @@ header{max-width:1180px}#nav{gap:4px 18px;order:3;width:100%}#nav a{font-size:1.
 <section id="course" class="hide">
   <button class="back" id="co_back" onclick="go('courses')">← All courses</button>
   <h2 id="cd_title"></h2><span class="period hide" id="cd_period"></span>
-  <div class="card"><p class="txt" id="cd_about"></p><h3 id="cd_more_h" class="hide"></h3><p class="txt" id="cd_more"></p></div></section>
+  <div class="card"><div class="rich" id="cd_about"></div><div class="rich th" id="cd_about_th"></div><h3 id="cd_more_h" class="hide"></h3><div class="rich" id="cd_more"></div></div></section>
 
 <section id="training" class="hide"><h2 id="tr_title">Training</h2>
   <div id="tr_locked">
     <div class="lock">🔒</div>
     <div class="card"><b id="tr_lock_title" style="font-size:1.25rem">Need Verification Code to Continue</b><ul class="notes" id="tr_notes"></ul></div>
     <div class="two"><button class="btn main" id="tr_fee_btn" onclick="panel('fee')">Fee Structure</button><button class="btn alt" id="tr_vol_btn" onclick="panel('vol')">Volunteer Form</button></div>
-    <div class="card panel hide" id="tr_fee"><p class="txt" id="tr_fee_text"></p></div>
-    <div class="card panel hide" id="tr_vol"><p class="txt" id="tr_vol_text"></p><a class="btn main hide" id="tr_vol_link" target="_blank" rel="noopener"></a></div>
+    <div class="card panel hide" id="tr_fee"><div class="rich" id="tr_fee_text"></div></div>
+    <div class="card panel hide" id="tr_vol"><div class="rich" id="tr_vol_text"></div><a class="btn main hide" id="tr_vol_link" target="_blank" rel="noopener"></a></div>
     <div class="card"><label for="tr_code" id="tr_code_label" style="font-weight:800">Enter your verification code</label>
       <div class="code" style="margin-top:8px"><input id="tr_code" autocomplete="off" autocapitalize="characters" onkeydown="if(event.key==='Enter')unlock()"><button id="tr_go" onclick="unlock()">CONTINUE</button></div>
       <p class="err" id="tr_msg"></p></div>
@@ -200,6 +202,17 @@ addEventListener("hashchange",()=>route(location.hash.slice(1)));
 document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();go(a.dataset.p);}));
 // small helpers for the pages below
 const setT=(id,v)=>{if(v!=null&&v!=="")$(id).textContent=v;};
+// Simple formatting for long texts typed in Pages CMS:
+// lines starting with "-" or "•" become bullet points, a short line just above bullets becomes a heading,
+// a line of "_ _ _" becomes a divider, every other line is a paragraph. Everything is escaped first.
+function rich(s){const L=String(s||"").replace(/\r/g,"").split("\n"),isB=l=>/^\s*[-•*]\s+/.test(l);let h="",ul=false;
+ for(let i=0;i<L.length;i++){const l=L[i].trim();
+  if(isB(l)){if(!ul){h+="<ul>";ul=true;}h+="<li>"+esc(l.replace(/^[-•*]\s+/,""))+"</li>";continue;}
+  if(ul){h+="</ul>";ul=false;}
+  if(!l)continue;
+  if(/^(_\s*){3,}$/.test(l)){h+="<hr>";continue;}
+  h+=(l.length<=60&&isB((L[i+1]||"").trim()))?"<h4>"+esc(l)+"</h4>":"<p>"+esc(l)+"</p>";}
+ if(ul)h+="</ul>";return h;}
 function safeUrl(u){u=String(u||"").trim();return /^(https?:\/\/|\/|media\/)/i.test(u)?u:"";}
 const isAudio=u=>/\.(mp3|m4a|wav|ogg|aac|oga|opus)(\?|#|$)/i.test(u);
 
@@ -214,7 +227,7 @@ function showCourse(i){CI=i;go("course");try{history.replaceState(null,"","#cour
  if(!COURSES){$("cd_title").textContent="…";return;}
  const x=COURSES[i];if(!x){go("courses");return;}
  $("cd_title").textContent=x.title;$("cd_period").textContent=x.period||"";$("cd_period").classList.toggle("hide",!x.period);
- $("cd_about").textContent=x.about||"";$("cd_more").textContent=x.more||"";
+ $("cd_about").innerHTML=rich(x.about);$("cd_about_th").innerHTML=x.about_th?"<hr>"+rich(x.about_th):"";$("cd_more").innerHTML=rich(x.more);
  $("cd_more_h").textContent=CO.more_heading||"More information";$("cd_more_h").classList.toggle("hide",!x.more);}
 
 // ---------- STAR BOARD (content/starboard.json) ----------
@@ -239,8 +252,8 @@ let TR={}, OKCODE="", ITEMS=[];
 fetch("content/training.json").then(r=>r.json()).then(t=>{TR=t;
  [["tr_title","title"],["tr_lock_title","lock_title"],["tr_fee_btn","fee_label"],["tr_vol_btn","vol_label"],["tr_code_label","code_label"],["tr_go","code_button"],["tr_out","logout"]].forEach(([id,k])=>setT(id,t[k]));
  $("tr_notes").innerHTML=(t.notes||[]).filter(Boolean).map(n=>`<li>${esc(n)}</li>`).join("");
- $("tr_fee_text").textContent=t.fee_text||"Coming soon.";
- $("tr_vol_text").textContent=t.vol_text||(t.vol_link?"":"Coming soon.");
+ $("tr_fee_text").innerHTML=rich(t.fee_text||"Coming soon.");
+ $("tr_vol_text").innerHTML=rich(t.vol_text||(t.vol_link?"":"Coming soon."));
  const vl=safeUrl(t.vol_link);$("tr_vol_link").classList.toggle("hide",!vl);if(vl){$("tr_vol_link").href=vl;$("tr_vol_link").textContent=t.vol_button||"Open the Volunteer Form";}
 }).catch(()=>{});
 try{const s=localStorage.getItem("se_training_code")||"";if(s)checkCode(s,true);}catch(e){}
@@ -296,10 +309,14 @@ async function submitAll(){const t=S[LANG];
  }catch(e){$("msg").textContent=t.fail;$("send").disabled=false;}}
 async function postJSON(o){const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();if(!d.ok)throw 0;return d;}
 function clearBox(ids){ids.forEach(i=>{const e=$(i);if(e.type==="checkbox")e.checked=false;else e.value="";});}
-function loadAssign(){fetch("content/assignment.json").then(r=>r.json()).then(a=>{
- const rows=(a.rows||[]).filter(r=>r.date||r.topic||r.vocab);
- $("abody").innerHTML=rows.map(r=>`<tr><td>${esc(r.date||"")}</td><td>${esc(r.kind||"")}</td><td>${esc(r.topic||"")}</td><td>${esc(r.vocab||"")}</td></tr>`).join("");
- $("a_none").textContent=rows.length?"":(a.empty||"No assignment yet.");}).catch(()=>{});}
+// Today's Assignment: the date is today's date in Thailand (changes by itself every day);
+// the topic and the vocabulary letters are typed in Pages CMS (content/assignment.json).
+function todayTH(){try{const p=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Bangkok",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());return p.replace(/-/g,".");}
+ catch(e){const d=new Date();return d.getFullYear()+"."+String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0");}}
+function loadAssign(){fetch("content/assignment.json",{cache:"no-store"}).then(r=>r.json()).then(a=>{
+ const has=!!(String(a.topic||"").trim()||String(a.vocab||"").trim());
+ $("abody").innerHTML=has?`<tr><td>${esc(todayTH())}</td><td>${esc(a.topic||"")}</td><td>${esc(a.vocab||"")}</td></tr>`:"";
+ $("a_none").textContent=has?"":(a.empty||"No assignment yet.");}).catch(()=>{});}
 loadAssign();
 // Reads the I.D. file. Photos are shrunk to max 1600px JPEG so they upload fast; PDFs up to 5 MB.
 function readId(f){return new Promise((ok,bad)=>{if(!f){ok(null);return;}
@@ -322,13 +339,13 @@ async function submitReg(){const v=k=>$(k).value.trim();
   $("thanks_text").textContent=C.thanks_register||"Your registration has been received.";go("thanks");}
  catch(e){$("rmsg").textContent="Something went wrong. Please try again.";$("rsend").disabled=false;}}
 async function submitTurnin(){const v=k=>$(k).value.trim();
- const o={action:"turnin",code:v("t_code"),topic:v("t_topic"),vocab:v("t_vocab"),diff:v("t_diff")};
- if(!o.code||!o.topic||!o.vocab||!/^\d{2}$/.test(o.diff)){$("tmsg").textContent="Please fill in every box. Diff Score must be 2 digits, for example 04.";return;}
+ const o={action:"turnin",code:v("t_code"),topic:v("t_topic"),transcript:v("t_transcript"),diff:v("t_diff")};
+ if(!o.code||!o.topic||!o.transcript||!/^\d{2}$/.test(o.diff)){$("tmsg").textContent="Please fill in every box. Diff Score must be 2 digits, for example 04.";return;}
  $("tsend").disabled=true;$("tmsg").textContent="Sending…";
  try{const res=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(o)});const d=await res.json();
   if(!d.ok){$("tmsg").textContent=d.error==="code"?(C.turnin_bad_code||"That Student Code is not correct. Please check it, or ask Dr. Ray."):"Something went wrong. Please try again.";$("tsend").disabled=false;return;}
   try{localStorage.setItem("se_student_code",o.code);}catch(e){}
-  clearBox(["t_topic","t_vocab","t_diff"]);$("tmsg").textContent="";$("tsend").disabled=false;
+  clearBox(["t_topic","t_transcript","t_diff"]);$("tmsg").textContent="";$("tsend").disabled=false;
   $("thanks_text").textContent=C.thanks_turnin||"Your assignment has been received.";go("thanks");}
  catch(e){$("tmsg").textContent="Something went wrong. Please try again.";$("tsend").disabled=false;}}
 try{const sc=localStorage.getItem("se_student_code");if(sc)$("t_code").value=sc;}catch(e){}

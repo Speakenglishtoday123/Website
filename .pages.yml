@@ -26,8 +26,14 @@ content:
       - { name: about_text, label: About - text, type: text }
       - { name: assign_title, label: Today's Assignment - title, type: string }
       - { name: assign_text, label: Today's Assignment - short line above the table, type: text }
+      - { name: assign_col_date, label: Today's Assignment - column 1 title, type: string }
+      - { name: assign_col_topic, label: Today's Assignment - column 2 title, type: string }
+      - { name: assign_col_vocab, label: Today's Assignment - column 3 title, type: string }
       - { name: turnin_title, label: Turn-In - title, type: string }
       - { name: turnin_code_label, label: Turn-In - Student Code label, type: string }
+      - { name: turnin_topic_label, label: Turn-In - Topic + Vocabulary label, type: string }
+      - { name: turnin_transcript_label, label: Turn-In - Transcript label, type: string }
+      - { name: turnin_diff_label, label: Turn-In - Diff Score label, type: string }
       - { name: turnin_bad_code, label: Turn-In - message for a wrong Student Code, type: text }
       - { name: register_title, label: Registration - title, type: string }
       - { name: reg_note, label: Registration - note above the form, type: text }
@@ -55,16 +61,9 @@ content:
     path: content/assignment.json
     format: json
     fields:
+      - { name: topic, label: "Self-Opted or Assigned Topic (words). The date is added automatically.", type: string }
+      - { name: vocab, label: "Vocabulary - TWO LETTERS ONLY, from the manual (for example br)", type: string }
       - { name: empty, label: Message when there is no assignment, type: string }
-      - name: rows
-        label: Assignments (add, edit or delete rows)
-        type: object
-        list: true
-        fields:
-          - { name: date, label: Date (for example 2026.12.01), type: string }
-          - { name: kind, label: Self-Opted or Assigned, type: string }
-          - { name: topic, label: Topic, type: string }
-          - { name: vocab, label: Vocabulary, type: text }
   - name: courses
     label: Courses
     type: file
@@ -82,7 +81,8 @@ content:
         fields:
           - { name: title, label: Course name, type: string }
           - { name: period, label: "Time period (for example Jan - Mar 2027)", type: string }
-          - { name: about, label: What the course is about, type: text }
+          - { name: about, label: "What the course is about - English (start a line with - for a bullet point)", type: text }
+          - { name: about_th, label: "What the course is about - Thai (optional, shown below the English)", type: text }
           - { name: more, label: "Other details (fees, schedule, who it is for)", type: text }
   - name: training
     label: Training page text (codes and materials are in the Google Sheet)
@@ -94,7 +94,7 @@ content:
       - { name: lock_title, label: Heading (Need Verification Code), type: string }
       - { name: notes, label: Bullet points under the heading, type: string, list: true }
       - { name: fee_label, label: Fee button text, type: string }
-      - { name: fee_text, label: Fee structure (shown when the Fee button is pressed), type: text }
+      - { name: fee_text, label: "Fee structure (start a line with - for a bullet point; a line of _ _ _ makes a divider)", type: text }
       - { name: vol_label, label: Volunteer button text, type: string }
       - { name: vol_text, label: Volunteer text (shown when the Volunteer button is pressed), type: text }
       - { name: vol_link, label: Volunteer Form link (for example a Google Form), type: string }
